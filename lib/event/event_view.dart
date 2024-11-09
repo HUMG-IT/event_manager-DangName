@@ -1,5 +1,5 @@
 import 'package:event_manager/event/event_data_source.dart';
-import 'package:event_manager/event/event_mode.dart';
+import 'package:event_manager/event/event_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localization.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
@@ -17,7 +17,7 @@ class EventView extends StatefulWidget {
 class _EventViewState extends State<EventView> {
   final eventService = EventService();
   //Danh sách sự kiện
-  List<EventMode> items = [];
+  List<EventModel> items = [];
 // Taoj CalendarController để điều khiển SfCalendar
   final calendarController = CalendarController();
 
@@ -74,7 +74,7 @@ class _EventViewState extends State<EventView> {
           // Nếu không có sự kiện trong cell
           if (details.targetElement == CalendarElement.calendarCell) {
             // tạo mới một đối tượng sự kiện trong thời gian lịch theo giao diện
-            final newEvent = EventMode(
+            final newEvent = EventModel(
                 subject: 'New event',
                 startTime: details.date!,
                 endTime: details.date!.add(const Duration(hours: 1)));
@@ -92,7 +92,7 @@ class _EventViewState extends State<EventView> {
         },
         onTap: (details) {
           if (details.targetElement == CalendarElement.appointment) {
-            final EventMode event = details.appointments!.first;
+            final EventModel event = details.appointments!.first;
             Navigator.of(context).push(MaterialPageRoute(
               builder: (context) {
                 return EventDetailView(event: event);

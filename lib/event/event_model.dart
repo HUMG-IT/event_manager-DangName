@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 
-class EventMode {
+class EventModel {
   String? id;
   DateTime startTime;
   DateTime endTime;
@@ -10,7 +10,7 @@ class EventMode {
   String subject;
   String? note;
   String? recurrenceRule;
-  EventMode({
+  EventModel({
     this.id,
     required this.startTime,
     required this.endTime,
@@ -20,7 +20,7 @@ class EventMode {
     this.recurrenceRule,
   });
 
-  EventMode copyWith({
+  EventModel copyWith({
     ValueGetter<String?>? id,
     DateTime? startTime,
     DateTime? endTime,
@@ -29,7 +29,7 @@ class EventMode {
     ValueGetter<String?>? note,
     ValueGetter<String?>? recurrenceRule,
   }) {
-    return EventMode(
+    return EventModel(
       id: id != null ? id() : this.id,
       startTime: startTime ?? this.startTime,
       endTime: endTime ?? this.endTime,
@@ -53,8 +53,8 @@ class EventMode {
     };
   }
 
-  factory EventMode.fromMap(Map<String, dynamic> map) {
-    return EventMode(
+  factory EventModel.fromMap(Map<String, dynamic> map) {
+    return EventModel(
       id: map['id'],
       startTime: DateTime.fromMillisecondsSinceEpoch(map['startTime']),
       endTime: DateTime.fromMillisecondsSinceEpoch(map['endTime']),
@@ -67,19 +67,19 @@ class EventMode {
 
   String toJson() => json.encode(toMap());
 
-  factory EventMode.fromJson(String source) =>
-      EventMode.fromMap(json.decode(source));
+  factory EventModel.fromJson(String source) =>
+      EventModel.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'EventMode(id: $id, startTime: $startTime, endTime: $endTime, isAllDay: $isAllDay, subject: $subject, note: $note, recurrenceRule: $recurrenceRule)';
+    return 'EventModel(id: $id, startTime: $startTime, endTime: $endTime, isAllDay: $isAllDay, subject: $subject, note: $note, recurrenceRule: $recurrenceRule)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is EventMode &&
+    return other is EventModel &&
         other.id == id &&
         other.startTime == startTime &&
         other.endTime == endTime &&
@@ -101,7 +101,7 @@ class EventMode {
   }
 }
 
-extension ExtEventModel on EventMode {
+extension ExtEventModell on EventModel {
   String get formatedStartTimeString =>
       '${startTime.hour}:${startTime.minute}, ${startTime.day}/${startTime.month}:${startTime.year}';
   String get formatedEndTimeString =>

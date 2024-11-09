@@ -68,7 +68,7 @@ flutter test
 ### Các tệp kiểm thử
 
 - **main_test.dart:** Kiểm thử khởi động ứng dụng chính.
-- **event_model_test.dart:** Kiểm thử lớp `EventModel`.
+- **event_model_test.dart:** Kiểm thử lớp `EventModell`.
 - **event_service_test.dart:** Kiểm thử lớp `EventService`.
 - **event_view_test.dart:** Kiểm thử widget `EventView`.
 - **event_detail_view_test.dart:** Kiểm thử widget 
