@@ -138,7 +138,7 @@ class _EventDetailViewState extends State<EventDetailView> {
                   FilledButton.tonalIcon(
                       onPressed: _deleteEvent, label: const Text('Xóa')),
                 FilledButton.tonalIcon(
-                    onPressed: _saveEvent, label: const Text('Lưu')),
+                    onPressed: _saveEvent, label: const Text('Lưu sự kiện')),
               ],
             )
           ],
